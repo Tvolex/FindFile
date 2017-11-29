@@ -31,8 +31,13 @@ public class Path {
         this.currentPath = path;
         
     }
-    
+
+    public Path(File path) {
+       this.currentPath = path.getAbsolutePath();
+    }
+
     public boolean validate() {
+        
         char[] chars = currentPath.toCharArray();
         
         exist = new File(currentPath).exists();
@@ -50,7 +55,7 @@ public class Path {
         
         System.out.println("path is valid: " + result);
            
-       
+       //asds
         return result;
     }
     

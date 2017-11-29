@@ -31,8 +31,12 @@ public class Read {
         this.path = path;
         
     }
+
+    public Read(String phrase, File[] file) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
-    public String readFile(){
+    public String findInFile(){
         
         try {
             
@@ -66,9 +70,9 @@ public class Read {
             
             System.err.println(e);
             
-            return "Not founded";
+            return null;
         } 
         
-        return "Not founded";
+        return null;
     }    
 }

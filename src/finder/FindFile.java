@@ -24,6 +24,7 @@ import sun.rmi.runtime.Log;
 public class FindFile {
     private static int procces = 1;
     private static String phrase;
+    public static Find findFile;
     
     private Map collection;
     /**
@@ -54,34 +55,12 @@ public class FindFile {
                 
                 //   D:/Programs/JavasProjects/FindFile/src/
                 
-                for (File file : listOfFiles) {
-                    
-                    if (file.isFile()) {
-                        
-                        Read readedFile = new Read(phrase, file.toString());
-                        
-                        readedFile.readFile();
-                        
-                    } else if (file.isDirectory()) {
-                        
-                        try {
-                            
-                            Read readedFile = new Read(phrase, file.toString());
-                            
-                            readedFile.readFile();
-                            
-                        } catch (Exception e) {
-                            
-                            System.err.println(e);
-                            
-                        }
-                        
-                    }
-                    
-                    
-                }
+                if (listOfFiles != null)
+                    findFile = new Find(phrase, inPath);
                 
-                System.out.println(listOfFiles.length);
+                else 
+                    
+                    System.err.println("Somethins wrong");
                 
             } else {
                 
@@ -100,6 +79,6 @@ public class FindFile {
                 procces = 0;
             
         }
-         
     }
 }
+

@@ -33,7 +33,7 @@ public class Main {
         while(!data.equals("0")){
             //для коректної кросплатформеності додаємо той кінець рядка який використовується в ОС
             w.addToFile(data+System.getProperty("line.separator"));
-            r.readFile();
+            r.findInFile();
             System.out.println("Введіть текст для збереження, або 0 для виходу.");
             data=in.readLine();
         }
