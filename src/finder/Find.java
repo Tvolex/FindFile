@@ -15,9 +15,9 @@ import java.util.Arrays;
  */
 public final class Find {
     
-    private static String[] allFiles = new String[999];
+    private static String[] allFiles = new String[100];
     
-    private static String[] foundedFiles = new String[20];
+    private static String[] foundedFiles = new String[10];
 
     private static String Expansion = ".txt";
     
@@ -98,7 +98,7 @@ public final class Find {
                     foundedFiles[i] = result;
                     
                 } catch(Exception e) {
-                    
+                    System.err.println("Some trouble: " + e.getMessage());
                 }
             }
             
@@ -116,6 +116,7 @@ public final class Find {
     }
     
     private String[] findQueue (String find, String path) {
+        
         File f = new File(path);
         
         String currentPath;
@@ -154,26 +155,46 @@ public final class Find {
     
     private String[] findByEachFile(String[] allFiles) {
         
-        String[] Result = new String[100];
+        String[] Result = new String[15];
         
         int j = 0;
         
-        for (String file : allFiles) {
-            
-                if (file != null) {
+        try {
+        
+            for (String file : allFiles) {
 
-                    Read tempFile = new Read(Phrase, file);
+                    if (file != null) {
 
-                    if (!tempFile.toString().equals(null)) {
+                        Read tempFile = new Read(Phrase, file);
 
-                        Result[j] = tempFile.findInFile();
+                        if (!tempFile.toString().equals(null)) {
 
-                        j++;
+                            Result[j] = tempFile.findInFile();
+
+                            j++;
+                    }
                 }
             }
+        } catch (Exception e) {
+            
+            System.err.println("Some fuck*ng shit trouble: " + e);
             
         }
         
+        
+        
         return Result;
     }
+    
+    
+    public static void trash() {
+        sada ams, g;sdmf, zs'd
+        g 
+                dflmg dzkf df4g df
+                        lm 'sdkfn g'sdklf;lm adf
+                                h lsdmfk'l 'ldfkmdfxk'ld'dfkml'lksdhd4][dg km'l
+                                4gr  r
+    }
+    
 }
+ 
