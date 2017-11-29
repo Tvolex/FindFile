@@ -14,9 +14,10 @@ import java.util.TreeMap;
 
 /**
  *
- * @author tisya
+ * @author tvolex
  */
 public class Path {
+    
     private String currentPath;
     
     private boolean exist;
@@ -26,17 +27,17 @@ public class Path {
     private boolean result;
     
     
-    public Path(String path) {
+    public Path (String path) {
         
         this.currentPath = path;
         
     }
 
-    public Path(File path) {
+    public Path (File path) {
        this.currentPath = path.getAbsolutePath();
     }
 
-    public boolean validate() {
+    public boolean validate () {
         
         char[] chars = currentPath.toCharArray();
         
@@ -59,7 +60,7 @@ public class Path {
         return result;
     }
     
-    public File[] contains() {
+    public File[] contains () {
         
         return new File(currentPath).listFiles();
         

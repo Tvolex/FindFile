@@ -28,7 +28,7 @@ public class Input {
             return path;
         } catch (IOException ex) {
             
-            Logger.getLogger(FindFile.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         
         }
         

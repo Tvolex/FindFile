@@ -21,7 +21,7 @@ import sun.rmi.runtime.Log;
  *
  * @author tvolex
  */
-public class FindFile {
+public class Main {
     private static int procces = 1;
     private static String phrase;
     public static Find findFile;
@@ -55,10 +55,15 @@ public class FindFile {
                 
                 //   D:/Programs/JavasProjects/FindFile/src/
                 
-                if (listOfFiles != null)
-                    findFile = new Find(phrase, inPath);
+                if (listOfFiles != null) {
+                    
+                    findFile = new Find(phrase, inPath, ".txt");
                 
-                else 
+                    String[] TOTAL_RESULT = findFile.queue();
+                    
+                    System.err.println("TOTAL RESULT: " + Arrays.toString(TOTAL_RESULT));
+                
+                } else
                     
                     System.err.println("Somethins wrong");
                 
