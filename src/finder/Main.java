@@ -59,9 +59,9 @@ public class Main {
                     
                     findFile = new Find(phrase, inPath, ".txt");
                 
-                    String[] TOTAL_RESULT = findFile.queue();
+                    ArrayList TOTAL_RESULT = findFile.queue();
                     
-                    System.err.println("TOTAL RESULT: " + Arrays.toString(TOTAL_RESULT));
+                    System.err.println("TOTAL RESULT: " + TOTAL_RESULT);
                 
                 } else
                     

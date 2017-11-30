@@ -15,9 +15,11 @@ import java.util.Arrays;
  */
 public final class Find {
     
-    private static String[] allFiles = new String[100];
+    private static ArrayList allFiles = new ArrayList();
     
-    private static String[] foundedFiles = new String[10];
+    private static ArrayList foundedFiles = new ArrayList();
+    
+    private static ArrayList ff = new ArrayList();
 
     private static String Expansion = ".txt";
     
@@ -70,7 +72,7 @@ public final class Find {
         findRuntime(Phrase, Path); 
     };
     
-    public String[] queue () {
+    public ArrayList queue () {
         return findQueue(Phrase, Path);
     }
     
@@ -95,7 +97,7 @@ public final class Find {
                 
                 try {
                     
-                    foundedFiles[i] = result;
+                    foundedFiles.add(result.toString());
                     
                 } catch(Exception e) {
                     System.err.println("Some trouble: " + e.getMessage());
@@ -115,65 +117,66 @@ public final class Find {
 
     }
     
-    private String[] findQueue (String find, String path) {
+    private ArrayList findQueue (String find, String path) {
         
         File f = new File(path);
         
-        String currentPath;
+        if (!path.endsWith("/"))
+                path = path + "/";
+        
+        String currentFile;
+        
+         
         
         String[] list = f.list();   
         
         
         
-        for (String file : list) {      
-            if (!path.endsWith("/")) {
-                path = path + "/";
-            }
+        for (String file : list) {  
             
-            currentPath = path + file;
+            currentFile = path + file;
             
-            File tempFile = new File(currentPath);
+            File tempFile = new File(currentFile);
             
+            /**
+             * if tempFile is File and have related expansion that push to allFiles
+             */
             if (tempFile.isFile() && tempFile.getName().endsWith(Expansion)) {
                  
-                allFiles[i] = path + file; // insert all files with Expansion .txt to String[] AllFiles
+                allFiles.add(currentFile); // insert all files with Expansion .txt to AllFiles
                 
-                i++;
-               
+                //continue;
             }
             
-            File tempfile = new File(path, file);
-            
-            if (tempfile.isDirectory()) {      
+            if (tempFile.isDirectory()) {      
                     
-                    findQueue(find, path + file); 
-                }
+                findQueue(find, currentFile); 
+            }
         }
         
-        return findByEachFile(allFiles);
+        return findInEachFile(allFiles);
     }
     
-    private String[] findByEachFile(String[] allFiles) {
+    private ArrayList findInEachFile(ArrayList allFiles) {
         
-        String[] Result = new String[15];
-        
-        int j = 0;
+        ArrayList Result = new ArrayList();
         
         try {
         
-            for (String file : allFiles) {
+            for (Object file : allFiles) {
+                
+                if (file != null) {
 
-                    if (file != null) {
+                    String tempFile = new Read(Phrase, file.toString()).findInFile();
 
-                        Read tempFile = new Read(Phrase, file);
+                    if (tempFile != null) {
 
-                        if (!tempFile.toString().equals(null)) {
-
-                            Result[j] = tempFile.findInFile();
-
-                            j++;
+                        Result.add(tempFile);
                     }
+                        
                 }
+                
+                
             }
         } catch (Exception e) {
             
@@ -182,18 +185,7 @@ public final class Find {
         }
         
         
-        
         return Result;
-    }
-    
-    
-    public static void trash() {
-        sada ams, g;sdmf, zs'd
-        g 
-                dflmg dzkf df4g df
-                        lm 'sdkfn g'sdklf;lm adf
-                                h lsdmfk'l 'ldfkmdfxk'ld'dfkml'lksdhd4][dg km'l
-                                4gr  r
     }
     
 }
