@@ -19,18 +19,11 @@ public final class Find {
     
     private static ArrayList foundedFiles = new ArrayList();
     
-    private static ArrayList ff = new ArrayList();
-
     private static String Expansion = ".txt";
     
     private static String Phrase;
     
     private static String Path;
-    
-    private static int i = 0;
-    
-    private static boolean flag;
-    
     
     /**
      * This is a class in which to search
@@ -73,7 +66,8 @@ public final class Find {
     };
     
     public ArrayList queue () {
-        return findQueue(Phrase, Path);
+        ArrayList result = findQueue(Phrase, Path);
+        return result;
     }
     
     
@@ -126,17 +120,17 @@ public final class Find {
         
         String currentFile;
         
-         
-        
         String[] list = f.list();   
-        
-        
         
         for (String file : list) {  
             
             currentFile = path + file;
             
             File tempFile = new File(currentFile);
+            
+            
+             System.out.println("now im here: " + tempFile.getAbsolutePath());
+            
             
             /**
              * if tempFile is File and have related expansion that push to allFiles
@@ -145,7 +139,7 @@ public final class Find {
                  
                 allFiles.add(currentFile); // insert all files with Expansion .txt to AllFiles
                 
-                //continue;
+                continue;
             }
             
             if (tempFile.isDirectory()) {      

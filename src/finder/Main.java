@@ -22,20 +22,27 @@ import sun.rmi.runtime.Log;
  * @author tvolex
  */
 public class Main {
-    private static int procces = 1;
-    private static String phrase;
-    public static Find findFile;
     
-    private Map collection;
+    private static ArrayList TOTAL_RESULT;
+    private static String confirm;
+    private static String phrase;
+    private static Find findFile;
+    private static String inPath;
+    private static int procces;
+    private static Path path;
+    
     /**
      * 
      * @param args main method 
      */
     public static void main (String args[]) throws IOException {
-        start();
+        
+        procces = 1;
+        
+        startProcess();
     }
     
-    public static void start () {
+    public static void startProcess () {
         
         while (procces == 1) {
             
@@ -45,27 +52,20 @@ public class Main {
             
             System.err.print("Enter your path: ");
                 
-            String inPath = Input.get();
+            inPath = Input.get();
             
-            Path path = new Path(inPath);
+            path = new Path(inPath);
             
             if (path.validate()) {
                 
-                File[] listOfFiles = path.contains();
+                findFile = new Find(phrase, inPath, ".txt");
+                
+                TOTAL_RESULT = findFile.queue();
+                    
+                System.err.println("TOTAL RESULT: " + TOTAL_RESULT);
                 
                 //   D:/Programs/JavasProjects/FindFile/src/
                 
-                if (listOfFiles != null) {
-                    
-                    findFile = new Find(phrase, inPath, ".txt");
-                
-                    ArrayList TOTAL_RESULT = findFile.queue();
-                    
-                    System.err.println("TOTAL RESULT: " + TOTAL_RESULT);
-                
-                } else
-                    
-                    System.err.println("Somethins wrong");
                 
             } else {
                 
@@ -75,15 +75,27 @@ public class Main {
             
             System.out.println("Repeat? (y/n)");
             
-            String confirm = Input.get();
+            confirm = Input.get();
             
             
             if (confirm.equals("y")) 
-                procces = 1;
+                updateVariables();
             else 
                 procces = 0;
             
         }
+    }
+    
+    private static void updateVariables() {
+        
+        Main.TOTAL_RESULT = null;
+        Main.findFile = null;
+        Main.confirm = null;
+        Main.inPath = null;
+        Main.phrase = null;
+        Main.path = null;
+        
+        
     }
 }
 

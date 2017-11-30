@@ -35,10 +35,12 @@ public class Read {
     
     public String findInFile (){
         
-        if (path != null) {
+        File currentFile = new File(path);
+        
+        if (path != null && currentFile.isFile()) {
             try {
 
-                FileInputStream fis = new FileInputStream(new File(path)); 
+                FileInputStream fis = new FileInputStream(currentFile); 
 
                 byte[] content = new byte[fis.available()];
 
@@ -58,13 +60,16 @@ public class Read {
 
                             System.out.println("Found in: " + path);
 
-                            return path;
+                            break;
 
                         }
                         
-                        break;
                     }
+                    
+                    return currentFile.getAbsolutePath();
                 }
+                
+                
 
             } catch (IOException e) {
 
