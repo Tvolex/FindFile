@@ -68,8 +68,6 @@ public class Read {
                     
                     return currentFile.getAbsolutePath();
                 }
-                
-                
 
             } catch (IOException e) {
 
